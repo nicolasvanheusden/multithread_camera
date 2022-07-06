@@ -19,7 +19,7 @@ mixin _$MyCameraEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() cameraStarted,
-    required TResult Function(CameraImage image, CameraDescription description)
+    required TResult Function(CameraImage? image, CameraDescription description)
         startImageStream,
     required TResult Function() stopImageStream,
   }) =>
@@ -27,7 +27,7 @@ mixin _$MyCameraEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? cameraStarted,
-    TResult Function(CameraImage image, CameraDescription description)?
+    TResult Function(CameraImage? image, CameraDescription description)?
         startImageStream,
     TResult Function()? stopImageStream,
   }) =>
@@ -35,7 +35,7 @@ mixin _$MyCameraEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cameraStarted,
-    TResult Function(CameraImage image, CameraDescription description)?
+    TResult Function(CameraImage? image, CameraDescription description)?
         startImageStream,
     TResult Function()? stopImageStream,
     required TResult orElse(),
@@ -124,7 +124,7 @@ class _$_CameraStarted implements _CameraStarted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() cameraStarted,
-    required TResult Function(CameraImage image, CameraDescription description)
+    required TResult Function(CameraImage? image, CameraDescription description)
         startImageStream,
     required TResult Function() stopImageStream,
   }) {
@@ -135,7 +135,7 @@ class _$_CameraStarted implements _CameraStarted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? cameraStarted,
-    TResult Function(CameraImage image, CameraDescription description)?
+    TResult Function(CameraImage? image, CameraDescription description)?
         startImageStream,
     TResult Function()? stopImageStream,
   }) {
@@ -146,7 +146,7 @@ class _$_CameraStarted implements _CameraStarted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cameraStarted,
-    TResult Function(CameraImage image, CameraDescription description)?
+    TResult Function(CameraImage? image, CameraDescription description)?
         startImageStream,
     TResult Function()? stopImageStream,
     required TResult orElse(),
@@ -201,7 +201,7 @@ abstract class _$$_StartImageStreamCopyWith<$Res> {
   factory _$$_StartImageStreamCopyWith(
           _$_StartImageStream value, $Res Function(_$_StartImageStream) then) =
       __$$_StartImageStreamCopyWithImpl<$Res>;
-  $Res call({CameraImage image, CameraDescription description});
+  $Res call({CameraImage? image, CameraDescription description});
 }
 
 /// @nodoc
@@ -224,7 +224,7 @@ class __$$_StartImageStreamCopyWithImpl<$Res>
       image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as CameraImage,
+              as CameraImage?,
       description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -239,7 +239,7 @@ class _$_StartImageStream implements _StartImageStream {
   const _$_StartImageStream(this.image, this.description);
 
   @override
-  final CameraImage image;
+  final CameraImage? image;
   @override
   final CameraDescription description;
 
@@ -273,7 +273,7 @@ class _$_StartImageStream implements _StartImageStream {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() cameraStarted,
-    required TResult Function(CameraImage image, CameraDescription description)
+    required TResult Function(CameraImage? image, CameraDescription description)
         startImageStream,
     required TResult Function() stopImageStream,
   }) {
@@ -284,7 +284,7 @@ class _$_StartImageStream implements _StartImageStream {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? cameraStarted,
-    TResult Function(CameraImage image, CameraDescription description)?
+    TResult Function(CameraImage? image, CameraDescription description)?
         startImageStream,
     TResult Function()? stopImageStream,
   }) {
@@ -295,7 +295,7 @@ class _$_StartImageStream implements _StartImageStream {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cameraStarted,
-    TResult Function(CameraImage image, CameraDescription description)?
+    TResult Function(CameraImage? image, CameraDescription description)?
         startImageStream,
     TResult Function()? stopImageStream,
     required TResult orElse(),
@@ -343,10 +343,10 @@ class _$_StartImageStream implements _StartImageStream {
 
 abstract class _StartImageStream implements MyCameraEvent {
   const factory _StartImageStream(
-          final CameraImage image, final CameraDescription description) =
+          final CameraImage? image, final CameraDescription description) =
       _$_StartImageStream;
 
-  CameraImage get image => throw _privateConstructorUsedError;
+  CameraImage? get image => throw _privateConstructorUsedError;
   CameraDescription get description => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_StartImageStreamCopyWith<_$_StartImageStream> get copyWith =>
@@ -395,7 +395,7 @@ class _$_StopImageStream implements _StopImageStream {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() cameraStarted,
-    required TResult Function(CameraImage image, CameraDescription description)
+    required TResult Function(CameraImage? image, CameraDescription description)
         startImageStream,
     required TResult Function() stopImageStream,
   }) {
@@ -406,7 +406,7 @@ class _$_StopImageStream implements _StopImageStream {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? cameraStarted,
-    TResult Function(CameraImage image, CameraDescription description)?
+    TResult Function(CameraImage? image, CameraDescription description)?
         startImageStream,
     TResult Function()? stopImageStream,
   }) {
@@ -417,7 +417,7 @@ class _$_StopImageStream implements _StopImageStream {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? cameraStarted,
-    TResult Function(CameraImage image, CameraDescription description)?
+    TResult Function(CameraImage? image, CameraDescription description)?
         startImageStream,
     TResult Function()? stopImageStream,
     required TResult orElse(),

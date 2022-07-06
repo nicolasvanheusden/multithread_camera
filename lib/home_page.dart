@@ -1,5 +1,6 @@
 
 
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,16 +18,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   late final CameraController _controller;
-  Future<void>? _initializeControllerFuture;
-
+  int counter = 0;
 
   @override
   void initState() {
     super.initState();
     _controller = CameraController(
         widget.cameras.where((element) => element.lensDirection == CameraLensDirection.front).first,
-        ResolutionPreset.high,
-        imageFormatGroup: ImageFormatGroup.jpeg
+        ResolutionPreset.medium,
+        imageFormatGroup: ImageFormatGroup.yuv420
     );
     _controller.initialize().then((_) {
       if (!mounted) {
@@ -49,33 +49,32 @@ class _HomePageState extends State<HomePage> {
             _controller.stopImageStream();
             BlocProvider.of<MyCameraBloc>(context).add(const MyCameraEvent.stopImageStream());
           } else {
-            _controller.startImageStream((image) {
-            BlocProvider.of<MyCameraBloc>(context).add(MyCameraEvent.startImageStream(
+             _controller.startImageStream((image) {
+              counter++;
+              if (counter <= 50) {
+                 BlocProvider.of<MyCameraBloc>(context).add(MyCameraEvent.startImageStream(
                 image,
                 _controller.description
-            ));
-          });
+                ));
+              } else {
+                _controller.stopImageStream();
+                BlocProvider.of<MyCameraBloc>(context).add(const MyCameraEvent.stopImageStream());
+              }
+           });
           }
-          
         },
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          return StreamBuilder(
-            stream: BlocProvider.of<MyCameraBloc>(context).channelStream,
-            builder: (context, snapshot) {
-              print(snapshot.data);
-              return SizedBox(
-                width: constraints.maxWidth,
-                height: constraints.maxHeight,
-                child: _controller.value.isInitialized
-                  ? AspectRatio(
-                    aspectRatio: _controller.value.aspectRatio,
-                    child: CameraPreview(_controller)
-                    )
-                  : const Center(child: CircularProgressIndicator()),
-              );
-            }
+          return SizedBox(
+            width: constraints.maxWidth,
+            height: constraints.maxHeight,
+            child: _controller.value.isInitialized
+              ? AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: CameraPreview(_controller)
+                )
+              : const Center(child: CircularProgressIndicator()),
           );
         }
       ),
