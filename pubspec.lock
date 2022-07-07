@@ -135,7 +135,7 @@ packages:
     source: hosted
     version: "2.2.0"
   camera_web:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: camera_web
       url: "https://pub.dartlang.org"
@@ -303,20 +303,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  google_mlkit_commons:
-    dependency: transitive
-    description:
-      name: google_mlkit_commons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.0"
-  google_mlkit_face_detection:
-    dependency: "direct main"
-    description:
-      name: google_mlkit_face_detection
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.0"
   graphs:
     dependency: transitive
     description:

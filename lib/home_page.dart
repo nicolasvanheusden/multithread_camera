@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _controller = CameraController(
-        widget.cameras.where((element) => element.lensDirection == CameraLensDirection.front).first,
+        widget.cameras.first,
         ResolutionPreset.high,
         imageFormatGroup: ImageFormatGroup.jpeg
     );
